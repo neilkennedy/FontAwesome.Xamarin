@@ -1,14 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FontAwesome.Xamarin/FontAwesome.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FontAwesome.Xamarin/FABarButtonItem.cs">
     <Files>
-      <File FileName="FontAwesome.Xamarin/FontAwesome.cs" Line="38" Column="29" />
+      <File FileName="FontAwesome.Xamarin/FontAwesome.cs" Line="1" Column="1" />
+      <File FileName="FontAwesome.Xamarin/FABarButtonItem.cs" Line="48" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="FontAwesome.Xamarin" expanded="True">
-            <Node name="FontAwesome.cs" selected="True" />
+            <Node name="FABarButtonItem.cs" selected="True" />
           </Node>
         </State>
       </Pad>
