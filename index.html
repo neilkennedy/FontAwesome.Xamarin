@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>FontAwesome.Xamarin by neilkennedy</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>FontAwesome.Xamarin</h1>
+          <h2>FontAwesome Library for Xamarin.iOS (MonoTouch)</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/neilkennedy/FontAwesome.Xamarin/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/neilkennedy/FontAwesome.Xamarin/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/neilkennedy/FontAwesome.Xamarin" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="fontawesomexamarin" class="anchor" href="#fontawesomexamarin"><span class="octicon octicon-link"></span></a>FontAwesome.Xamarin</h1>
+
+<p>This is a simple library to help when using <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> with Xamarin.iOS. All v4.0.3 icons from the <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">cheatsheet</a> are included.</p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<ul>
+<li>Add dist/FontAwesome.Xamarin.dll to your project</li>
+<li>Add dist/FontAwesome.ttf to the Resources directory of your project
+
+<ul>
+<li>Set Build Action to "BundleResource"</li>
+<li>Set Copy to output directory to "Always Copy"</li>
+</ul>
+</li>
+<li>Open Info.plist
+
+<ul>
+<li>Click on the Source tab</li>
+<li>Add a new property and select "Fonts provided by application" from the dropdown list</li>
+<li>Add a new item to the array called FontAwesome.ttf</li>
+</ul>
+</li>
+</ul><h2>
+<a name="using-it" class="anchor" href="#using-it"><span class="octicon octicon-link"></span></a>Using it</h2>
+
+<h3>
+<a name="fontawesomecs" class="anchor" href="#fontawesomecs"><span class="octicon octicon-link"></span></a>FontAwesome.cs</h3>
+
+<p>Once the library and font have been added, using FontAwesome is very simple. There is one static method <code>.Font(int size)</code> that returns the <code>UIFont</code> class with the specified size. Each icon is listed as a static method. The CSS class of <code>fa-lock</code> would become <code>FontAwesome.FALock</code>.</p>
+
+<div class="highlight highlight-csharp"><pre><span class="k">using</span> <span class="nn">FontAwesomeXamarin</span><span class="p">;</span>
+
+<span class="n">UILabel</span> <span class="n">lockLabel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UILabel</span> <span class="p">(</span><span class="k">new</span> <span class="n">RectangleF</span> <span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">320</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">Font</span> <span class="p">=</span> <span class="n">FontAwesome</span><span class="p">.</span><span class="n">Font</span><span class="p">(</span><span class="m">100</span><span class="p">),</span> <span class="c1">//100 is the font size we want to use</span>
+    <span class="n">Text</span> <span class="p">=</span> <span class="n">FontAwesome</span><span class="p">.</span><span class="n">FALock</span><span class="p">,</span> <span class="c1">//Here we're using the lock icon "fa-lock"</span>
+    <span class="n">TextColor</span> <span class="p">=</span> <span class="n">UIColor</span><span class="p">.</span><span class="n">White</span><span class="p">,</span>
+    <span class="n">TextAlignment</span> <span class="p">=</span> <span class="n">UITextAlignment</span><span class="p">.</span><span class="n">Center</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>Because FontAwesome is a font based icon library we can set the text color and size in the same way we would for any other regular font.</p>
+
+<h3>
+<a name="fabarbuttonitemcs" class="anchor" href="#fabarbuttonitemcs"><span class="octicon octicon-link"></span></a>FABarButtonItem.cs</h3>
+
+<p>This will create a <code>UIBarButtonItem</code> with a FontAwesome icon that can be used in a <code>UINavigationBar</code>. Internally it uses a <code>UIButton</code> for the font and click event and adds it as the <code>CustomView</code> of the <code>UIBarButtonItem</code>.</p>
+
+<div class="highlight highlight-csharp"><pre><span class="n">NavigationItem</span><span class="p">.</span><span class="n">RightBarButtonItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FABarButtonItem</span> <span class="p">(</span><span class="n">FontAwesome</span><span class="p">.</span><span class="n">FATrashO</span><span class="p">,</span> <span class="n">UIColor</span><span class="p">.</span><span class="n">White</span><span class="p">,</span> <span class="k">delegate</span> <span class="p">{</span>
+    <span class="c1">//Click event handler</span>
+<span class="p">});</span>
+</pre></div>
+        </section>
+
+        <footer>
+          FontAwesome.Xamarin is maintained by <a href="https://github.com/neilkennedy">neilkennedy</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
