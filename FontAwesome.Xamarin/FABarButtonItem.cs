@@ -36,7 +36,8 @@ namespace FontAwesomeXamarin
 		/// Use the CustomView property to access the button that we create with the new icon
 		/// </summary>
 		/// <param name="icon">An icon from <see cref="FontAwesome.Xamarin.FontAwesome"/></param>
-		/// <param name="handler">Event handler to be used on click</param>
+		/// <param name="fontColor">The UIColor for the icon and title</param>
+		/// <param name="handler">The event handler for when the button is pressed</param>
 		public FABarButtonItem (string icon, UIColor fontColor, EventHandler handler) : base()
 		{
 			var iconButton = new UIButton (new RectangleF (0, 0, 32, 32)) {
@@ -47,6 +48,36 @@ namespace FontAwesomeXamarin
 			iconButton.TouchUpInside += handler;
 
 			CustomView = iconButton;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FontAwesomeXamarin.FABarButtonItem"/> class.
+		/// </summary>
+		/// <param name="icon">An icon from <see cref="FontAwesome.Xamarin.FontAwesome"/></param>
+		/// <param name="title">A title to display under the icon</param>
+		/// <param name="fontColor">The UIColor for the icon and title</param>
+		/// <param name="handler">The event handler for when the button is pressed</param>
+		public FABarButtonItem (string icon, string title, UIColor fontColor, EventHandler handler) : base()
+		{
+			UIView view = new UIView (new RectangleF (0, 0, 32, 32));
+			UILabel label = new UILabel (new RectangleF (0, 22, 32, 10)) {
+				Text = title,
+				TextColor = fontColor,
+				Font = UIFont.SystemFontOfSize(10f),
+				TextAlignment = UITextAlignment.Center
+			};
+
+			UIButton button = new UIButton (new RectangleF (0, 0, 32, 16)) {
+				Font = FontAwesome.Font (25),
+			};
+			button.SetTitle (icon, UIControlState.Normal);
+			button.SetTitleColor (fontColor, UIControlState.Normal);
+			button.TouchUpInside += handler;
+
+			view.Add (button);
+			view.Add (label);
+
+			CustomView = view;
 		}
 	}
 }
