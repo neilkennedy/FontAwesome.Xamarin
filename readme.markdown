@@ -27,7 +27,7 @@ UILabel lockLabel = new UILabel (new RectangleF (0, 30, 320, 100)) {
     TextAlignment = UITextAlignment.Center
 };
 ```
-![Icon in a UILabel](https://github.com/neilkennedy/FontAwesome.Xamarin/blob/master/images/icon.png)
+![Icon in a UILabel](https://raw.github.com/neilkennedy/FontAwesome.Xamarin/master/images/icon.png)
 
 Because FontAwesome is a font based icon library we can set the text color and size in the same way we would for any other regular font.
 
@@ -39,11 +39,11 @@ NavigationItem.RightBarButtonItem = new FABarButtonItem (FontAwesome.FATrashO, U
     //Click event handler
 });
 ```
-![Navigation Bar Icon](https://github.com/neilkennedy/FontAwesome.Xamarin/blob/master/images/navigation_icon.png)
+![Navigation Bar Icon](https://raw.github.com/neilkennedy/FontAwesome.Xamarin/master/images/navigation_icon.png)
 
 ```csharp
 NavigationItem.RightBarButtonItem = new FABarButtonItem (FontAwesome.FAGithub, "Github", UIColor.White, delegate {
     //Click event handler
 });
 ```
-![Navigation Bar Icon with Title](https://github.com/neilkennedy/FontAwesome.Xamarin/blob/master/images/navigation_icon_title.png)
+![Navigation Bar Icon with Title](https://raw.github.com/neilkennedy/FontAwesome.Xamarin/master/images/navigation_icon_title.png)
