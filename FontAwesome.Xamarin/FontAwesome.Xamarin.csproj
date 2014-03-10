@@ -42,5 +42,6 @@
   <ItemGroup>
     <Compile Include="FontAwesome.cs" />
     <Compile Include="FABarButtonItem.cs" />
+    <Compile Include="FontAwesomeException.cs" />
   </ItemGroup>
 </Project>

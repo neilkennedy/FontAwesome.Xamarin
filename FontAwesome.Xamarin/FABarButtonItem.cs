@@ -31,6 +31,53 @@ namespace FontAwesomeXamarin
 {
 	public class FABarButtonItem : UIBarButtonItem
 	{
+		private UILabel _titleLabel = null;
+		private UIButton _iconButton = null;
+
+		/// <summary>
+		/// Gets or sets the Title of the button.
+		/// Throws <see cref="FontAwesome.Xamarin.FontAwesomeException"/> if this button does not have a title
+		/// </summary>
+		/// <value>The title.</value>
+		public override string Title{
+			get{
+				if (_titleLabel != null) {
+					return _titleLabel.Text;
+				} else {
+					throw new FontAwesomeException ("This button does not have a title");
+				}
+			}
+			set{
+				if (_titleLabel != null) {
+					_titleLabel.Text = value;
+				} else {
+					throw new FontAwesomeException ("This button does not have a title");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the icon for the button. Should be from <see cref="FontAwesome.Xamarin.FontAwesome"/>.
+		/// Throws <see cref="FontAwesome.Xamarin.FontAwesomeException"/> if the button has not been initialized yet
+		/// </summary>
+		/// <value>The icon.</value>
+		public string Icon {
+			get {
+				if (_iconButton != null) {
+					return _iconButton.Title (UIControlState.Normal);
+				}else {
+					throw new FontAwesomeException ("This button has not been initialized yet");
+				}
+			}
+			set {
+				if (_iconButton != null) {
+					_iconButton.SetTitle (value, UIControlState.Normal);
+				}else {
+					throw new FontAwesomeException ("This button has not been initialized yet");
+				}
+			}
+		}
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FontAwesome.Xamarin.FABarButtonItem"/> class.
 		/// Use the CustomView property to access the button that we create with the new icon
@@ -40,14 +87,15 @@ namespace FontAwesomeXamarin
 		/// <param name="handler">The event handler for when the button is pressed</param>
 		public FABarButtonItem (string icon, UIColor fontColor, EventHandler handler) : base()
 		{
-			var iconButton = new UIButton (new RectangleF (0, 0, 32, 32)) {
+			_iconButton = new UIButton (new RectangleF (0, 0, 32, 32)) {
 				Font = FontAwesome.Font (25)
 			};
-			iconButton.SetTitle (icon, UIControlState.Normal);
-			iconButton.SetTitleColor (fontColor, UIControlState.Normal);
-			iconButton.TouchUpInside += handler;
+			_iconButton.SetTitleColor (fontColor, UIControlState.Normal);
+			_iconButton.TouchUpInside += handler;
 
-			CustomView = iconButton;
+			this.Icon = icon;
+
+			CustomView = _iconButton;
 		}
 
 		/// <summary>
@@ -60,22 +108,24 @@ namespace FontAwesomeXamarin
 		public FABarButtonItem (string icon, string title, UIColor fontColor, EventHandler handler) : base()
 		{
 			UIView view = new UIView (new RectangleF (0, 0, 32, 32));
-			UILabel label = new UILabel (new RectangleF (0, 22, 32, 10)) {
-				Text = title,
+
+			_iconButton = new UIButton (new RectangleF (0, 0, 32, 21)) {
+				Font = FontAwesome.Font (20),
+			};
+			_iconButton.SetTitleColor (fontColor, UIControlState.Normal);
+			_iconButton.TouchUpInside += handler;
+
+			_titleLabel = new UILabel (new RectangleF (0, 18, 32, 10)) {
 				TextColor = fontColor,
 				Font = UIFont.SystemFontOfSize(10f),
 				TextAlignment = UITextAlignment.Center
 			};
 
-			UIButton button = new UIButton (new RectangleF (0, 0, 32, 16)) {
-				Font = FontAwesome.Font (25),
-			};
-			button.SetTitle (icon, UIControlState.Normal);
-			button.SetTitleColor (fontColor, UIControlState.Normal);
-			button.TouchUpInside += handler;
+			this.Title = title;
+			this.Icon = icon;
 
-			view.Add (button);
-			view.Add (label);
+			view.Add (_iconButton);
+			view.Add (_titleLabel);
 
 			CustomView = view;
 		}
