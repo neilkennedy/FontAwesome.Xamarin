@@ -1,4 +1,4 @@
-﻿//
+//
 // FAButton.cs
 //
 // Author:
@@ -24,7 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace FontAwesomeXamarin
 {
@@ -47,7 +47,7 @@ namespace FontAwesomeXamarin
 		/// Gets or sets the size of the icon
 		/// </summary>
 		/// <value>The size of the icon.</value>
-		public float IconSize{
+		public nfloat IconSize{
 			get{ return this.Font.PointSize; }
 			set{
 				this.Font = FontAwesome.Font (value);

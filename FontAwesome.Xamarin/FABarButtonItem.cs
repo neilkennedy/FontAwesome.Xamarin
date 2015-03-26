@@ -24,8 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace FontAwesomeXamarin
 {
@@ -87,7 +87,7 @@ namespace FontAwesomeXamarin
 		/// <param name="handler">The event handler for when the button is pressed</param>
 		public FABarButtonItem (string icon, UIColor fontColor, EventHandler handler) : base()
 		{
-			_iconButton = new UIButton (new RectangleF (0, 0, 32, 32)) {
+			_iconButton = new UIButton (new CGRect (0, 0, 32, 32)) {
 				Font = FontAwesome.Font (25)
 			};
 			_iconButton.SetTitleColor (fontColor, UIControlState.Normal);
@@ -107,15 +107,15 @@ namespace FontAwesomeXamarin
 		/// <param name="handler">The event handler for when the button is pressed</param>
 		public FABarButtonItem (string icon, string title, UIColor fontColor, EventHandler handler) : base()
 		{
-			UIView view = new UIView (new RectangleF (0, 0, 32, 32));
+			UIView view = new UIView (new CGRect (0, 0, 32, 32));
 
-			_iconButton = new UIButton (new RectangleF (0, 0, 32, 21)) {
+			_iconButton = new UIButton (new CGRect (0, 0, 32, 21)) {
 				Font = FontAwesome.Font (20),
 			};
 			_iconButton.SetTitleColor (fontColor, UIControlState.Normal);
 			_iconButton.TouchUpInside += handler;
 
-			_titleLabel = new UILabel (new RectangleF (0, 18, 32, 10)) {
+			_titleLabel = new UILabel (new CGRect (0, 18, 32, 10)) {
 				TextColor = fontColor,
 				Font = UIFont.SystemFontOfSize(10f),
 				TextAlignment = UITextAlignment.Center

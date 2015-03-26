@@ -24,13 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace FontAwesomeXamarin
 {
 	public class FontAwesome
 	{
-		public static UIFont Font (float size) {
+		public static UIFont Font (nfloat size) {
 			return UIFont.FromName ("FontAwesome", size);
 		}
 			
