@@ -94,7 +94,7 @@ namespace FontAwesomeXamarin
 			_iconButton.TouchUpInside += handler;
 
 			this.Icon = icon;
-
+			this._titleLabel.Text = string.Empty;
 			CustomView = _iconButton;
 		}
 

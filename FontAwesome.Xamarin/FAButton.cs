@@ -56,12 +56,12 @@ namespace FontAwesomeXamarin
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FontAwesomeXamarin.FAButton"/> class.
-		/// This class extends UIButton. It does set set a default Frame. You must do this yourself
+		/// This class extends UIButton. It does not set a default Frame. You must do this yourself
 		/// </summary>
 		/// <param name="icon">Icon.</param>
 		/// <param name="fontColor">Font color.</param>
 		/// <param name="iconSize">Icon size.</param>
-		public FAButton (string icon, UIColor fontColor, float iconSize = 20) : base(UIButtonType.System)
+		public FAButton (string icon, UIColor fontColor, float iconSize = 20)
 		{
 			Icon = icon;
 			IconSize = iconSize;
