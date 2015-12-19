@@ -41,16 +41,20 @@ namespace FontAwesomeXamarin
 		/// <value>The title.</value>
 		public override string Title{
 			get{
-				if (_titleLabel != null) {
+				if (_titleLabel != null) 
+				{
 					return _titleLabel.Text;
-				} else {
-					throw new FontAwesomeException ("This button does not have a title");
+				} else 
+				{
+					return null;
 				}
 			}
 			set{
-				if (_titleLabel != null) {
+				if (_titleLabel != null) 
+				{
 					_titleLabel.Text = value;
-				} else {
+				} else 
+				{
 					throw new FontAwesomeException ("This button does not have a title");
 				}
 			}
@@ -94,7 +98,6 @@ namespace FontAwesomeXamarin
 			_iconButton.TouchUpInside += handler;
 
 			this.Icon = icon;
-			this._titleLabel.Text = string.Empty;
 			CustomView = _iconButton;
 		}
 
@@ -121,7 +124,7 @@ namespace FontAwesomeXamarin
 				TextAlignment = UITextAlignment.Center
 			};
 
-			this.Title = title;
+			this._titleLabel.Text = title;
 			this.Icon = icon;
 
 			view.Add (_iconButton);
