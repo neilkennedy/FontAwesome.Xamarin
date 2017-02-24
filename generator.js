@@ -21,7 +21,7 @@ var FontAwesomeXamarin = {
             spanElement = column.find('span');
             iElement = column.find('i');
 
-            unicode = spanElement.text().replace("(&#x", "\\u").replace(";)", "");
+            unicode = spanElement.text().replace("[&#x", "\\u").replace(";]", "").replace("(alias)","");
 
             spanElement.remove();
             iElement.remove();
@@ -29,7 +29,8 @@ var FontAwesomeXamarin = {
             label = self.toTitleCase(column.text());
             label = label.replace("Fa", "FA").replace(/- */g, ""); //remove the dashes and capitalise the Fa
 
-            console.log("public static string " + label + " = \"" + unicode + "\";");
+            var startIdx = label.indexOf('F');
+            console.log("public static string " + label.substr(startIdx) + " = \"" + unicode + "\";");
 
         });
     },
